@@ -3,9 +3,6 @@
 
 # LoginByIdcardActivity.java
 
-``
-    package com.seatrend.cd.vehiclesaleservice.activity;
-
     import android.Manifest;
     import android.app.Dialog;
     import android.content.ComponentName;
@@ -288,7 +285,7 @@
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_dqsfz:
-//                goNfcReadPlugin();
+                goNfcReadPlugin();
                 doLogin("511023198509290031");
                 break;
 
@@ -341,8 +338,6 @@
 
 # 下载进度的HttpService.java
 
-``
-    package com.seatrend.cd.vehiclesaleservice.http;
 
     import android.annotation.SuppressLint;
     import android.os.Handler;
@@ -1141,4 +1136,4 @@
             }
         }).start();
     }
-}``
+}
