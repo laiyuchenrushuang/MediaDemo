@@ -3,7 +3,7 @@
 
 # LoginByIdcardActivity.java
 
-package com.seatrend.cd.vehiclesaleservice.activity;
+``package com.seatrend.cd.vehiclesaleservice.activity;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -1142,4 +1142,4 @@ public class HttpService {
 
     }
 
-}
+}``
