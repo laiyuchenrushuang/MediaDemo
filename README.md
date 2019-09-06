@@ -3,54 +3,55 @@
 
 # LoginByIdcardActivity.java
 
-``package com.seatrend.cd.vehiclesaleservice.activity;
+``
+    package com.seatrend.cd.vehiclesaleservice.activity;
 
-import android.Manifest;
-import android.app.Dialog;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+    import android.Manifest;
+    import android.app.Dialog;
+    import android.content.ComponentName;
+    import android.content.Intent;
+    import android.content.pm.PackageManager;
+    import android.os.Build;
+    import android.os.Bundle;
+    import android.os.Handler;
+    import android.support.annotation.NonNull;
+    import android.support.annotation.RequiresApi;
+    import android.support.v4.app.ActivityCompat;
+    import android.util.Log;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.LinearLayout;
+    import android.widget.ProgressBar;
+    import android.widget.TextView;
+    import android.widget.Toast;
 
-import com.seatrend.cd.vehiclesaleservice.R;
-import com.seatrend.cd.vehiclesaleservice.common.BaseActivity;
-import com.seatrend.cd.vehiclesaleservice.common.Constants;
-import com.seatrend.cd.vehiclesaleservice.entity.CheckAppVersion;
-import com.seatrend.cd.vehiclesaleservice.entity.CommonProgress;
-import com.seatrend.cd.vehiclesaleservice.entity.CommonResponse;
-import com.seatrend.cd.vehiclesaleservice.entity.LoginEntity;
-import com.seatrend.cd.vehiclesaleservice.entity.User;
-import com.seatrend.cd.vehiclesaleservice.persenter.LoginPersenter;
-import com.seatrend.cd.vehiclesaleservice.util.AppUtils;
-import com.seatrend.cd.vehiclesaleservice.util.GsonUtils;
-import com.seatrend.cd.vehiclesaleservice.util.LoadingDialog;
-import com.seatrend.cd.vehiclesaleservice.util.OtherUtils;
-import com.seatrend.cd.vehiclesaleservice.util.ProgressDialog;
-import com.seatrend.cd.vehiclesaleservice.view.LoginView;
+    import com.seatrend.cd.vehiclesaleservice.R;
+    import com.seatrend.cd.vehiclesaleservice.common.BaseActivity;
+    import com.seatrend.cd.vehiclesaleservice.common.Constants;
+    import com.seatrend.cd.vehiclesaleservice.entity.CheckAppVersion;
+    import com.seatrend.cd.vehiclesaleservice.entity.CommonProgress;
+    import com.seatrend.cd.vehiclesaleservice.entity.CommonResponse;
+    import com.seatrend.cd.vehiclesaleservice.entity.LoginEntity;
+    import com.seatrend.cd.vehiclesaleservice.entity.User;
+    import com.seatrend.cd.vehiclesaleservice.persenter.LoginPersenter;
+    import com.seatrend.cd.vehiclesaleservice.util.AppUtils;
+    import com.seatrend.cd.vehiclesaleservice.util.GsonUtils;
+    import com.seatrend.cd.vehiclesaleservice.util.LoadingDialog;
+    import com.seatrend.cd.vehiclesaleservice.util.OtherUtils;
+    import com.seatrend.cd.vehiclesaleservice.util.ProgressDialog;
+    import com.seatrend.cd.vehiclesaleservice.view.LoginView;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+    import java.io.File;
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+    import butterknife.BindView;
+    import butterknife.ButterKnife;
+    import butterknife.OnClick;
 
-public class LoginByIdcardActivity extends BaseActivity implements LoginView {
+    public class LoginByIdcardActivity extends BaseActivity implements LoginView {
 
 
     @BindView(R.id.tv_user)
@@ -334,64 +335,64 @@ public class LoginByIdcardActivity extends BaseActivity implements LoginView {
         }
 
     }
-}
+}``
 
 
 
 # 下载进度的HttpService.java
 
+``
+    package com.seatrend.cd.vehiclesaleservice.http;
 
-package com.seatrend.cd.vehiclesaleservice.http;
+    import android.annotation.SuppressLint;
+    import android.os.Handler;
+    import android.os.Message;
+    import android.system.Os;
+    import android.text.TextUtils;
+    import android.util.Log;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import android.system.Os;
-import android.text.TextUtils;
-import android.util.Log;
+    import com.google.gson.JsonSyntaxException;
+    import com.seatrend.cd.vehiclesaleservice.common.BaseModule;
+    import com.seatrend.cd.vehiclesaleservice.common.Constants;
+    import com.seatrend.cd.vehiclesaleservice.common.MyApplication;
+    import com.seatrend.cd.vehiclesaleservice.entity.BaseEntity;
+    import com.seatrend.cd.vehiclesaleservice.entity.CommonProgress;
+    import com.seatrend.cd.vehiclesaleservice.entity.CommonResponse;
+    import com.seatrend.cd.vehiclesaleservice.entity.ErrorEntity;
+    import com.seatrend.cd.vehiclesaleservice.entity.User;
+    import com.seatrend.cd.vehiclesaleservice.module.ProgressModule;
+    import com.seatrend.cd.vehiclesaleservice.util.GsonUtils;
+    import com.seatrend.cd.vehiclesaleservice.util.NetUtils;
+    import com.seatrend.cd.vehiclesaleservice.util.SharedPreferencesUtils;
 
-import com.google.gson.JsonSyntaxException;
-import com.seatrend.cd.vehiclesaleservice.common.BaseModule;
-import com.seatrend.cd.vehiclesaleservice.common.Constants;
-import com.seatrend.cd.vehiclesaleservice.common.MyApplication;
-import com.seatrend.cd.vehiclesaleservice.entity.BaseEntity;
-import com.seatrend.cd.vehiclesaleservice.entity.CommonProgress;
-import com.seatrend.cd.vehiclesaleservice.entity.CommonResponse;
-import com.seatrend.cd.vehiclesaleservice.entity.ErrorEntity;
-import com.seatrend.cd.vehiclesaleservice.entity.User;
-import com.seatrend.cd.vehiclesaleservice.module.ProgressModule;
-import com.seatrend.cd.vehiclesaleservice.util.GsonUtils;
-import com.seatrend.cd.vehiclesaleservice.util.NetUtils;
-import com.seatrend.cd.vehiclesaleservice.util.SharedPreferencesUtils;
+    import java.io.File;
+    import java.io.FileOutputStream;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.io.OutputStream;
+    import java.net.URL;
+    import java.net.URLConnection;
+    import java.text.DecimalFormat;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.concurrent.TimeUnit;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
+    import okhttp3.Call;
+    import okhttp3.Callback;
+    import okhttp3.FormBody;
+    import okhttp3.MediaType;
+    import okhttp3.MultipartBody;
+    import okhttp3.OkHttpClient;
+    import okhttp3.Request;
+    import okhttp3.RequestBody;
+    import okhttp3.Response;
+    import okhttp3.ResponseBody;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+   /**
+     * Created by seatrend on 2018/8/20.
+     */
 
-/**
- * Created by seatrend on 2018/8/20.
- */
-
-public class HttpService {
+    public class HttpService {
 
     private static HttpService mHttpService;
     private BaseModule mBaseModule;
@@ -445,7 +446,7 @@ public class HttpService {
         }
     };
 
-//Request request = addHeaders().url(requestUrl).build();
+    //Request request = addHeaders().url(requestUrl).build();
     public void getDataFromServer(Map<String, String> map, final String url, String method, BaseModule module) {
         this.mBaseModule=module;
         if(!NetUtils.isNetworkAvailable(MyApplication.getMyApplicationContext())){
@@ -1139,7 +1140,5 @@ public class HttpService {
                 }
             }
         }).start();
-
     }
-
 }``
