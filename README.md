@@ -1,4 +1,10 @@
 # VehicleSaleService
+
+1. 学到了 比例的真谛，0dp一定要设置，这样才能比例显示。
+2. 网络post请求，原来还包括数据流，比如byte[]数据类型传递。
+3. 日历的学习，用三方[https://github.com/huanghaibin-dev/CalendarView],再次感谢
+4. 我觉得 界面复用 我还是高手，但是维护这个需要思考？？
+
 说多了没用直接上代码======
 
 # LoginByIdcardActivity.java
